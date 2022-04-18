@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #4b77bb;" stylesheets="@./css/loginStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <bottom>
+        <AnchorPane prefHeight="277.0" prefWidth="600.0" style="-fx-background-color: #4b77bb;" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="RegisterButton" layoutX="359.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#RegisterButtonClicked" prefHeight="18.0" prefWidth="62.0" text="Register" AnchorPane.rightAnchor="179.0" />
+                <Button fx:id="LogInButton" alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#LogInButtonClicked" prefHeight="37.0" prefWidth="251.0" text="Log in" textAlignment="JUSTIFY" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="177.0" />
+                <TextField fx:id="firstNameTextField" layoutX="171.0" prefHeight="37.0" prefWidth="252.0" promptText="Introduce your first name..." AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="177.0" />
+                <PasswordField fx:id="InvisiblePasswordField" layoutX="171.0" layoutY="101.0" prefHeight="37.0" prefWidth="251.0" promptText="Introduce your unique id..." AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="177.0" />
+                <Label layoutX="171.0" layoutY="229.0" prefHeight="17.0" prefWidth="188.0" text="Haven't registered yet?  Create an account" textFill="WHITE" AnchorPane.leftAnchor="171.0">
+                    <font>
+                        <Font size="9.0" />
+                    </font>
+                </Label>
+                <CheckBox fx:id="ShowPasswordCheckBox" layoutX="175.0" layoutY="145.0" mnemonicParsing="false" text="Show id" textFill="WHITE" AnchorPane.leftAnchor="175.0" />
+                <Label fx:id="ErrorMessageLoginIn" contentDisplay="CENTER" layoutX="229.0" layoutY="221.0" prefHeight="17.0" prefWidth="135.0" textFill="#d42b45">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Label>
+                <TextField fx:id="VisiblePasswordField" layoutX="171.0" layoutY="101.0" prefHeight="37.0" prefWidth="251.0" promptText="Introduce your unique id..." AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="177.0" />
+            <TextField fx:id="lastNameTextField" layoutX="171.0" layoutY="51.0" prefHeight="37.0" prefWidth="251.0" promptText="Introduce your last name..." />
+            </children>
+        </AnchorPane>
+    </bottom>
+</BorderPane>
