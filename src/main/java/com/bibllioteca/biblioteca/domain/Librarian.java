@@ -7,6 +7,9 @@ public class Librarian {
     String firstName;
     String lastName;
 
+    public Librarian() {
+    }
+
     public Librarian(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;

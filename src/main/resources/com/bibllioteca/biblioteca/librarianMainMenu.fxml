@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="126.0" fitWidth="146.0">
          <image>
@@ -48,11 +48,11 @@
          </image>
       </ImageView>
       <Button fx:id="logOutButton" layoutX="47.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#logOutButtonClicked" prefHeight="25.0" prefWidth="59.0" text="Log Out" />
-      <ListView fx:id="booksList" layoutX="152.0" layoutY="139.0" prefHeight="209.0" prefWidth="212.0" />
-      <Label contentDisplay="CENTER" layoutX="214.0" layoutY="117.0" prefHeight="17.0" prefWidth="126.0" text="Available books" textFill="#095984" />
-      <Button layoutX="412.0" layoutY="218.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Add book" />
-      <Button layoutX="412.0" layoutY="167.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Return a book" />
-      <Button layoutX="412.0" layoutY="269.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Remove book" />
-      <Button layoutX="412.0" layoutY="318.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Edit book" />
+      <ListView fx:id="booksList" layoutX="152.0" layoutY="139.0" prefHeight="209.0" prefWidth="244.0" />
+      <Label contentDisplay="CENTER" layoutX="251.0" layoutY="117.0" prefHeight="17.0" prefWidth="126.0" text="Books" textFill="#095984" />
+      <Button fx:id="addBookButton" layoutX="412.0" layoutY="218.0" mnemonicParsing="false" onMouseClicked="#addBookButtonClicked" prefHeight="25.0" prefWidth="159.0" text="Add book" />
+      <Button fx:id="returnBookButton" layoutX="412.0" layoutY="167.0" mnemonicParsing="false" onMouseClicked="#returnBookButtonClicked" prefHeight="25.0" prefWidth="159.0" text="Return a book" />
+      <Button fx:id="removeBookButton" layoutX="412.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#removeBookButtonClicked" prefHeight="25.0" prefWidth="159.0" text="Remove book" />
+      <Button fx:id="editBookButton" layoutX="412.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#editBookButtonClicked" prefHeight="25.0" prefWidth="159.0" text="Edit book" />
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package com.bibllioteca.biblioteca;
 
 import com.bibllioteca.biblioteca.domain.Book;
+import com.bibllioteca.biblioteca.domain.BookUser;
 import com.bibllioteca.biblioteca.domain.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,10 +31,16 @@ public class UserMainMenuController implements Initializable {
     private ListView<Book> booksList;
 
     @FXML
+    private ListView<Book> rentedList;
+
+    @FXML
     private Label nameLabel;
 
     @FXML
     private Button logOutButton;
+
+    @FXML
+    private Button rentBookButton;
 
     public void setService(Service service) {
         this.service = service;
@@ -45,13 +52,15 @@ public class UserMainMenuController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        nameLabel.setText(user.getFirstName()+" "+user.getLastName());
-        List<Book> availableBooks=service.findAllAvailableBooks();
-        final ObservableList<Book> data = FXCollections.observableArrayList(
-                availableBooks
-        );
+        update();
+    }
 
-        booksList.setItems(data);
+    @FXML
+    void rentBookButtonClicked(MouseEvent event) {
+        Book book=booksList.getSelectionModel().getSelectedItem();
+        service.rentBook(user.getId(),book.getIdUnique());
+        service.editBookStatus(book.getIdUnique(),"UNAVAILABLE");
+        update();
     }
 
     @FXML
@@ -67,5 +76,30 @@ public class UserMainMenuController implements Initializable {
         loginController.setService(service);
 
         stage.show();
+    }
+
+    public void update(){
+        nameLabel.setText(user.getFirstName()+" "+user.getLastName());
+        List<Book> availableBooks=service.findAllAvailableBooks();
+        final ObservableList<Book> data = FXCollections.observableArrayList(
+                availableBooks
+        );
+
+        booksList.setItems(data);
+
+        List<BookUser> rentedBooksByUser=service.findBooksRentedByUser(user.getId());
+        List<Book> rentedBooks=new ArrayList<>();
+        for(BookUser bookUser:rentedBooksByUser) {
+            for (Book book : service.findAllBooks()) {
+                if (book.getIdUnique() == bookUser.getIdBook())
+                    rentedBooks.add(book);
+            }
+        }
+
+        final ObservableList<Book> dataRented = FXCollections.observableArrayList(
+                rentedBooks
+        );
+
+        rentedList.setItems(dataRented);
     }
 }

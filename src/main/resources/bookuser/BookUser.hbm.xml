@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bibllioteca.biblioteca.domain.BookUser"
+           table="books_users">
+
+        <id name="idRent" column="idRent" type="int">
+            <generator class="increment"/>
+        </id>
+
+        <property
+                name="idBook"
+                column="idBook"  type="int"/>
+
+        <property
+                name="idUser"
+                column="idUser"  type="int"/>
+
+    </class>
+</hibernate-mapping>
+

@@ -7,13 +7,16 @@ public class Book {
     Integer idBook;
     String title;
     String author;
-    BookStatus status;
+    String status;
+
+    public Book() {
+    }
 
     public Book(Integer idBook, String title, String author) {
         this.idBook = idBook;
         this.title = title;
         this.author = author;
-        this.status=BookStatus.AVAILABLE;
+        this.status="AVAILABLE";
     }
 
     public Integer getIdUnique() {
@@ -48,11 +51,11 @@ public class Book {
         this.author = author;
     }
 
-    public BookStatus getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(BookStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -71,6 +74,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return title + " by " + author;
+        return title + " by " + author + " " + status;
     }
 }

@@ -1,11 +1,18 @@
 package com.bibllioteca.biblioteca.repository;
 
+import com.bibllioteca.biblioteca.domain.Librarian;
 import com.bibllioteca.biblioteca.domain.User;
+import com.bibllioteca.biblioteca.utils.ORMUtils;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class RepositoryUsers {
@@ -16,34 +23,29 @@ public class RepositoryUsers {
     }
 
     public User findOne(Integer id){
-        Connection connection= dbUtils.getConnection();
-        User user=null;
-        try(PreparedStatement preparedStatement= connection.prepareStatement("select * from users where id=?")){
-            preparedStatement.setInt(1,id);
-            try(ResultSet resultSet= preparedStatement.executeQuery()){
-                while(resultSet.next())
-                {
-                    String firstName=resultSet.getString("first_name");
-                    String lastName=resultSet.getString("last_name");
-                    String phone=resultSet.getString("phone");
-                    String address=resultSet.getString("address");
-                    String cnp=resultSet.getString("cnp");
-                    user= new User(firstName,lastName,phone,address,cnp);
-                    user.setId(id);
-                    connection.close();
-                    return user;
+        List<User> list=new ArrayList<>();
+        try (Session session = ORMUtils.getSessionFactory().openSession()) {
+            Transaction transaction = null;
+
+            try {
+                transaction = session.beginTransaction();
+
+                Query<User> query = session.createQuery("from User e where e.id = :id ",User.class);
+                query.setParameter("id",id);
+                list = query.list();
+
+
+                transaction.commit();
+            } catch (Exception ex) {
+                System.err.println("Eroare la cautare " + ex);
+
+                if (transaction != null) {
+                    transaction.rollback();
                 }
             }
-        }catch (SQLException e)
-        {
-            System.err.println("Error DB "+e);
         }
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return user;
+
+        return list.get(0);
     }
 
 }

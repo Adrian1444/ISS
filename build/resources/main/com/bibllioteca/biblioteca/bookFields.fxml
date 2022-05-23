@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="260.0" prefWidth="323.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="bookCodeTextField" layoutX="51.0" layoutY="54.0" prefHeight="25.0" prefWidth="227.0" promptText="Book code" />
+      <TextField fx:id="titleTextField" layoutX="52.0" layoutY="104.0" prefHeight="25.0" prefWidth="227.0" promptText="Title" />
+      <TextField fx:id="authorTextField" layoutX="52.0" layoutY="157.0" prefHeight="25.0" prefWidth="227.0" promptText="Author" />
+      <Button fx:id="commitButton" layoutX="112.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#commitButtonClicked" text="Commit changes" />
+   </children>
+</AnchorPane>

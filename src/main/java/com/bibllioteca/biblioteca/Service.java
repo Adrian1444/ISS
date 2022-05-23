@@ -1,6 +1,7 @@
 package com.bibllioteca.biblioteca;
 
 import com.bibllioteca.biblioteca.domain.Book;
+import com.bibllioteca.biblioteca.domain.BookUser;
 import com.bibllioteca.biblioteca.domain.Librarian;
 import com.bibllioteca.biblioteca.domain.User;
 import com.bibllioteca.biblioteca.repository.RepositoryBooks;
@@ -38,5 +39,39 @@ public class Service {
 
     public List<Book> findAllAvailableBooks(){
         return repositoryBooks.findAllAvailableBooks();
+    }
+
+    public List<BookUser> findBooksRentedByUser(int id){
+        return repositoryBooks.findBooksRentedByUser(id);
+    }
+
+    public List<Book> findAllBooks(){
+        return repositoryBooks.findAllBooks();
+    }
+
+    public void removeBook(int id){
+        repositoryBooks.delete(id);
+    }
+
+    public void addBook(int idBook, String title, String author) {
+        Book book=new Book(idBook,title,author);
+        repositoryBooks.add(book);
+    }
+
+    public void editBook(Integer idUnique, int newIdBook, String newTitle, String newAuthor) {
+        repositoryBooks.edit(idUnique,newIdBook,newTitle,newAuthor);
+    }
+
+    public void rentBook(int idUser,int idBook){
+        BookUser bookUser=new BookUser(idBook,idUser);
+        repositoryBooks.rentBook(bookUser);
+    }
+
+    public void editBookStatus(int idBook, String status){
+        repositoryBooks.editStatus(idBook,status);
+    }
+
+    public void returnBook(int idBook){
+        repositoryBooks.returnBook(idBook);
     }
 }

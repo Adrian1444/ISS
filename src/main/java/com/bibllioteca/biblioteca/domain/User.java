@@ -10,6 +10,9 @@ public class User {
     String address;
     String cnp;
 
+    public User() {
+    }
+
     public User(String firstName, String lastName, String phone, String address, String cnp) {
         this.firstName = firstName;
         this.lastName = lastName;
